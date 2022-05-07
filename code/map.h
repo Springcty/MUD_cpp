@@ -1,5 +1,7 @@
 #ifndef __MAP_H__
 #define __MAP_H__
+#define ROWNUM 20
+
 
 #include <iostream>
 #include <cstdlib>
@@ -14,6 +16,10 @@ struct Pos{
     Pos(int px=0, int py=0){
         x=px;
         y=py;
+    }
+    bool operator== (const Pos& that){
+        if(x==that.x && y==that.y) return true;
+        else return false;
     }
 };
 
@@ -30,6 +36,7 @@ public:
     ~Map(){}
     void initMap();
     void printMap();
+    bool IsValid();
 };
 
 #endif /* map_h */
