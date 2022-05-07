@@ -91,6 +91,39 @@ bool dfs(int map[][ROWNUM], Pos start, Pos dest){
 }
 
 bool Map::IsValid(){
-    if(dfs(node, pin, pout)) return true;
+    int map_temp[ROWNUM][ROWNUM];
+    Pos in_temp = pin;
+    Pos out_temp = pout;
+    for(int i=0; i<ROWNUM; i++){
+        for(int j=0; j<ROWNUM; j++){
+            map_temp[i][j] = node[i][j];
+        }
+    }
+    if(dfs(map_temp, in_temp, out_temp)) return true;
     else return false;
 }
+
+/*
++-----------------------------------------+
+|     * *   * *   * *   *   *     * * *   |
+|       * * * * * *   * *   *     *   * * |
+| *   *       *   * *     *     * *       |
+|         * *   * *     * *   * *   *   * |
+| * * * * * * *   * * *   * * * *     * * |
+| * *   * *     * * *   * * *       *   * |
+|     * * *   *   * * * *   *   *     * * |
+|       *       * *   * * *           * * |
+| *   *         * * * * *   *   * *   * * |
+|     * *   *     * * *   *     *     *   |
+|     *   *         *   *   *     * *   * |
+|       *         *   * *   *   *   *     |
+| * * *           *     *   *   *     *   |
+| * *   *     * * *   *   *     *         |
+| *     *     * * *   * * * * * *     * * |
+| * *   * *     X   *   *   * * *   *     |
+|   * *     *   * *   *   *   *     * * * |
+|         * * *   * * *     *   *   *   * |
+|       * * *           *   *       * *   |
+| *         *     * * *   * *   *   * * * |
++-----------------------------------------+
+*/

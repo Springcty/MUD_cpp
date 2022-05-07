@@ -25,8 +25,8 @@ struct Pos{
 
 class Map{
 private:
-    static const int nrows = 20; //number of rows
-    static const int ncols = 20; //number of columns
+    static const int nrows = ROWNUM; //number of rows
+    static const int ncols = ROWNUM; //number of columns
     int node[nrows][ncols]; // if the node accessible
     Pos pin; //position of entrance
     Pos pout; //position of exit
@@ -40,3 +40,27 @@ public:
 };
 
 #endif /* map_h */
+/*
++-----------------------------------------+
+|     * *   * *   * *   *   *     * * *   |
+|       * * * * * *   * *   *     *   * * |
+| *   *       *   * *     *     * *       |
+|         * *   * *     * *   * *   *   * |
+| * * * * * * *   * * *   * * * *     * * |
+| * *   * *     * * *   * * *       *   * |
+|     * * *   *   * * * *   *   *     * * |
+|       *       * *   * * *           * * |
+| *   *         * * * * *   *   * *   * * |
+| E   * *   *     * * *   *     *     *   |
+|     *   *         *   *   *     * *   * |
+|       *         *   * *   *   *   *     |
+| * * *           *     *   *   *     *   |
+| * *   *     * * *   *   *     *         |
+| *     *     * * *   * * * * * *     * * |
+| * *   * *     X   *   *   * * *   *     |
+|   * *     *   * *   *   *   *     * * * |
+|         * * *   * * *     *   *   *   * |
+|       * * *           *   *       * *   |
+| *         *     * * *   * *   *   * * * |
++-----------------------------------------+
+*/
