@@ -6,11 +6,7 @@
 #include "Map.h"
 #include "Player.h"
 #include <time.h>
-Player::Player(int x, int y):
-xp(x),
-yp(y)
-{
-}
+Player::Player(int x, int y):xp(x), yp(y) { }
 void Player::InputChoice(Map& screen,char c,char map[][20], char bgmap[][20], int pN)
 {
 
@@ -18,10 +14,9 @@ void Player::InputChoice(Map& screen,char c,char map[][20], char bgmap[][20], in
         std::cin >> x;
          switch(x){
                 case 'w' :        //moves 'x' up one and replaces the coord before with what it originally had
-                    if(yp <= 0){
-                        yp = 0;
-                    }else{yp-=1;}
-                        map[yp + 1][xp] = bgmap[yp + 1][xp]; //replace last coord with the background map, which stays constant.
+                    if(yp <= 0) yp = 0;
+                    else yp -= 1;
+                    map[yp + 1][xp] = bgmap[yp + 1][xp]; //replace last coord with the background map, which stays constant.
                     break;
                 case 's':
                     if(yp >= 19){

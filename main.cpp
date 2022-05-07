@@ -21,8 +21,8 @@ int main()
             int moves = 0;
             while(moves <3){
                 setcolor(red,backcolor());
-                std::cout  << "PLAYER ONE w(UP) s(DOWN) a(LEFT) d(RIGHT) g(SHOOT)"; //display controls and stats
-                std::cout  << "\n --- MOVES LEFT --- " << 3 - moves << std::endl;
+                std::cout << "PLAYER ONE w(UP) s(DOWN) a(LEFT) d(RIGHT) g(SHOOT)"; //display controls and stats
+                std::cout << "\n --- MOVES LEFT --- " << 3 - moves << std::endl;
                 setcolor(white,backcolor());
                 mObj.InputChoice(1); //run input function to see where to move
                 mObj.RefreshScreen(); //rewrite the array

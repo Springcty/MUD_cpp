@@ -12,8 +12,8 @@ ptObj(15,15) //player TWO object
 }
 void Map::SSP() //calls player function
 {
-            pObj.SetStartPos('B',map);
-            ptObj.SetStartPos('O',map);
+    pObj.SetStartPos('B',map);
+    ptObj.SetStartPos('O',map);
 }
 void Map::InputChoice(int pN) //player NUMBER
 {
@@ -33,10 +33,10 @@ void Map::InputChoice(int pN) //player NUMBER
 void Map::RefreshScreen() //reprint array
 {
     cls();
-    for( int nrow = 0; nrow < nrows; nrow++){
-            for(int ncol = 0; ncol < ncols;ncol++)
+    for(int nrow = 0; nrow < nrows; nrow++){
+            for(int ncol = 0; ncol<ncols; ncol++)
                 std::cout << map[nrow][ncol] << " ";
-            std::cout << std::endl;
+                std::cout << std::endl;
             }
 }
 void Map::cls() //windows h function to replace screen with nulls
