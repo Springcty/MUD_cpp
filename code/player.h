@@ -6,11 +6,17 @@
 #include "map.h"
 using namespace std;
 
-class player{
+#define MOVENUM 20
+
+class Player{
 private:
-    Pos character;
-    int score;
+    Pos temp;
+    Pos x;
 public:
+    Player(Pos e, Pos x): temp(e), x(x) { }
+    Pos GetPos();
+    void move(string d);
+    void play(Map m);
 };
 
 #endif
