@@ -14,7 +14,7 @@ private:
     Pos x;
 public:
     Player(Pos e, Pos x): temp(e), x(x) { }
-    Pos GetPos();
+    // Pos GetPos();
     void move(string d);
     void play(Map m);
 };

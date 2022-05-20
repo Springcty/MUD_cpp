@@ -119,7 +119,7 @@ void Map::printMap(Pos p){
     for(int i=0; i<nrows; i++){
         cout << "| ";
         for(int j=0; j<ncols; j++){
-            switch(node[i+2][j+2]){
+            switch(node[j+2][i+2]){
                 case Wall:
                     cout<<"* "; //CANNOT access
                     break;
