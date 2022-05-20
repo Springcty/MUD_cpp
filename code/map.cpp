@@ -6,27 +6,111 @@ int boolRand(){
     return rand()&1;
 }
 
-Pos nodeRand(int nx, int ny){  //get a random position
-    int px = rand()%(nx-1);
-    int py = rand()%(ny-1);
-    return Pos(px,py);
+int intRand(int lower, int upper){
+    return lower + rand() % (upper - lower + 1);
+}
+
+Pos Map::GetE(){
+    return pin;
+}
+
+Pos Map::GetX(){
+    return pout;
+}
+
+bool Map::isBlock(Pos p){ // return true for wall
+    return !node[p.x][p.y];
+}
+
+void Map::SetExit(){  //get a random position
+    int t1 = intRand(17+2,nrows-2+2);
+    int t2 = intRand(9+2,14+2);
+    int flag = boolRand();
+    if(flag){
+        pout = Pos(t1,t2);
+    }
+    else{
+        pout = Pos(t2,t1);
+    }
+}
+
+void Map::SetEntrance(){
+    int flag = intRand(0,6);
+    if(flag==5)flag=8;
+    switch(flag){
+        case 0:
+            pin = Pos(intRand(2,9),intRand(2,9));
+            break;
+        case 1:
+            pin = Pos(intRand(10,17),intRand(2,9));
+            break;
+        case 2:
+            pin = Pos(intRand(18,25),intRand(2,9));
+            break;
+        case 3:
+            pin = Pos(intRand(2,9),intRand(10,17));
+            break;
+        case 4:
+            pin = Pos(intRand(10,17),intRand(10,17));
+            break;
+        case 6:
+            pin = Pos(intRand(2,9),intRand(18,25));
+            break;
+        case 8:
+            pin = Pos(intRand(18,25),intRand(18,25));
+            break;
+        default:
+            break;
+    }
 }
 
 void Map::initMap(){
-    srand((int)time(0));	//random
-    for(int i=0; i<nrows; i++){
-        for(int j=0; j<ncols; j++){
-            node[i][j] = boolRand();
-        }
-    }
-    pin = nodeRand(nrows,ncols); //entrance
-    pout = nodeRand(nrows, ncols); //exit
-    node[pin.x][pin.y] = entrance;
-    node[pout.x][pout.y] = exits;
-    cnt = 300; //initialize cnt
+    for (int i = 0; i<ROWNUM; ++i) {
+		node[i][ROWNUM-1] = go;
+		node[ROWNUM-1][i] = go;
+		node[i][0] = go;
+		node[0][i] = go;
+	}
+    SetExit();
+    SetEntrance();
+    dig(pout.x, pout.y);
+    node[pin.x][pin.y]=entrance;
+    node[pout.x][pout.y]=exits;
 }
 
-void Map::printMap(){
+void Map::dig(int px, int py){ // start from (px,py)
+    if(node[px][py] == Wall){
+        if (node[px+1][py] + node[px-1][py] + node[px][py+1] + node[px][py-1] <= go) {
+			node[px][py] = go;
+
+			int dir[4] = {0,1,2,3};
+			for (int i=3; i>=0; --i) {
+				int r = rand()%(i+1);
+				swap(dir[r], dir[i]);
+
+				switch (dir[i]) {
+				case 0:
+					dig(px-1, py); //left
+					break;
+				case 1:
+					dig(px+1, py); //right
+					break;
+				case 2:
+					dig(px, py-1); //down
+					break;
+				case 3:
+					dig(px, py+1); //up
+					break;
+				default:
+					break;
+				}
+			}
+		}
+    }
+}
+
+void Map::printMap(Pos p){
+    node[p.x][p.y] = me;
     cout << "+";
     for(int i=0; i<ncols; i++){
         cout << "--";
@@ -35,8 +119,8 @@ void Map::printMap(){
     for(int i=0; i<nrows; i++){
         cout << "| ";
         for(int j=0; j<ncols; j++){
-            switch(node[i][j]){
-                case notgo:
+            switch(node[i+2][j+2]){
+                case Wall:
                     cout<<"* "; //CANNOT access
                     break;
                 case go:
@@ -46,10 +130,10 @@ void Map::printMap(){
                     cout<<"E "; //entrance
                     break;
                 case exits:
-                    cout<<"X ";
+                    cout<<"X "; //exit
                     break;
-                case star:
-                    cout<<"Q ";
+                case me:
+                    cout<<"P ";
                     break;
                 default:
                     break;
@@ -70,35 +154,3 @@ int dir[4][2] = {
     {-1,0}, // up
     {0,1}   // right
 };
-
-bool check(int x, int y){
-    return x<=ROWNUM && x>=0 && y<=ROWNUM && y>=0;
-}
-
-bool dfs(int map[][ROWNUM], Pos start, Pos dest){
-    if(start == dest) return true;
-
-    for(int i=0; i<4; i++){ // search in four directions
-        int a = start.x + dir[i][0];
-        int b = start.y + dir[i][1];
-        if(check(a,b) && map[a][b]!=0){
-            map[a][b] = 0;
-            if(dfs(map, Pos(a,b), dest)) return true;
-            map[a][b] = 1;
-        }
-    }
-    return false;
-}
-
-bool Map::IsValid(){
-    int map_temp[ROWNUM][ROWNUM];
-    Pos in_temp = pin;
-    Pos out_temp = pout;
-    for(int i=0; i<ROWNUM; i++){
-        for(int j=0; j<ROWNUM; j++){
-            map_temp[i][j] = node[i][j];
-        }
-    }
-    if(dfs(map_temp, in_temp, out_temp)) return true;
-    else return false;
-}
