@@ -65,8 +65,6 @@ int main(){
         cout << "Little Ice: ";
         // setcolor(white, backcolor());
         cout << "The nearest nucleic acid testing site is " << m.dict[x.loc] << endl;
-        cout << x.x << "," << x.y << endl;
-        cout << x.loc << endl;
         // setcolor(blue, backcolor());
         cout << "Little Ice: ";
         // setcolor(white, backcolor());
