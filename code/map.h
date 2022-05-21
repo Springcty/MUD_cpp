@@ -25,8 +25,13 @@ struct Pos{
         if(x==that.x && y==that.y) return true;
         else return false;
     }
+    bool operator!=(const Pos& that){
+        if(x!=that.x || y!=that.y) return true;
+        else return false;
+    }
     inline int UpdateLoc(){
-        return x/8 + 3*y/8;
+        // return x/8 + 3*y/8;
+        return (x-2)/8 + 3*((y-2)/8);
     }
 };
 
