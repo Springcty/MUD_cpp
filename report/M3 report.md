@@ -27,9 +27,25 @@
 
 ### 2 完成player类
 
+```c++
+class Player{
+private:
+    Pos temp; // current pos
+    Pos x; // exit of the maze
+public:
+    Player(Pos e, Pos x): temp(e), x(x) { }
+    void move(string d); // move one step to d(N,E,S,W)
+    void play(Map m); // play in the map m
+};
+```
 
+`void play(Map)`主要实现功能：
 
-
+* 提示玩家当前可移动方向
+* 根据玩家指令改变当前位置坐标`temp`
+* 判断是否进入新区域，如果是则提示进入新区域
+* `help`作弊模式：支持地图提示
+* 提示玩家剩余步数，判断游戏结果
 
 
 

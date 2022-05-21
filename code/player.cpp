@@ -1,12 +1,15 @@
 #include<iostream>
 #include "player.h"
 #include "map.h"
-// #include "concol.h"
 using namespace std;
 
-// Pos Player::GetPos(){
-//     return temp;
-// }
+void color_print(string s, int color){
+    HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(handle, FOREGROUND_INTENSITY | color);
+    cout << s;
+    SetConsoleTextAttribute(handle, FOREGROUND_INTENSITY | 7);
+}
+
 void Player::move(string d){
     switch (d[0])
     {
@@ -30,9 +33,7 @@ void Player::move(string d){
 void Player::play(Map m){
     int play_cnt = 0;
     while(temp != x){
-        // setcolor(blue, backcolor());
-        cout << "Little Ice: ";
-        // setcolor(white, backcolor());
+        color_print(ROBOT, 1);
         cout << "You can choose ";
         Pos a = temp;
         string s = ""; // remember the dirction able to move
@@ -59,39 +60,47 @@ void Player::play(Map m){
         cout << "to go" << endl;
         
         string d;
-        // setcolor(green, backcolor());
-        cout << "Player: ";
-        // setcolor(white, backcolor());
+        color_print(PLAYER, 2);
         cin >> d;
         if(s.find(d) != s.npos) move(d); // check if d is valid
         else if(d=="help"){ // help mode: print current map
             m.printMap(temp);
         }
+        else if(d=="exit") exit(1);
         else{
-            // setcolor(blue, backcolor());
-            cout << "Little Ice: ";
-            // setcolor(white, backcolor());
+            color_print(ROBOT, 1);
             cout << "This direction is blocked! Choose another please~" << endl;
         }
 
         int i_loc = temp.loc;
         temp.UpdateLoc();
+        // cout << temp.x << "," << temp.y << "  " << temp.loc << endl;
         // show when the player comes a new place
         if(temp.loc != i_loc){
-            cout << "You've arrived at " << m.dict[temp.loc] << "!" << endl;
-            cout << "Keep Going!" << endl;
+            color_print(ROBOT, 1);
+            cout << "You've arrived at ";
+            color_print(m.dict[temp.loc], 6);
+            cout << "! Keep Going ~" << endl;
         }
 
         // show the steps remained
         play_cnt ++;
-        // setcolor(blue, backcolor());
-        cout << "Little Ice: ";
-        // setcolor(white, backcolor());
-        cout << MOVENUM - play_cnt << "steps left" << endl;
+        color_print(ROBOT, 1);
+        cout << MOVENUM - play_cnt << " steps left\n" << endl;
+        if(play_cnt==MOVENUM) break;
     }
-    // setcolor(blue, backcolor());
-    cout << "Little Ice: ";
-    // setcolor(white, backcolor());
-    cout << "Congratulations!" << endl;
-    cout << "You've arrived at Nucleic Acid Testing site!" << endl;
+    color_print(ROBOT, 1);
+    if(play_cnt==MOVENUM){
+        color_print("Game Over!", 4);
+        cout << endl;
+        color_print(ROBOT, 1);
+        color_print("Sorry, your health code is failed for invalid nucleic acid test result!\n", 4);
+        cout << endl;
+    }
+    else{
+        color_print("Congratulations!", 4);
+        cout << "You've arrived at ";
+        color_print("Nucleic Acid Testing site\n", 6);
+        cout << endl;
+    } 
 }

@@ -31,7 +31,8 @@ struct Pos{
     }
     inline int UpdateLoc(){
         // return x/8 + 3*y/8;
-        return (x-2)/8 + 3*((y-2)/8);
+        loc = (x-2)/8 + 3*((y-2)/8);
+        return loc;
     }
 };
 
