@@ -44,6 +44,7 @@ void Welcome(){
 }
 
 int main(){
+    srand((int)time(NULL));	//random
     // map<int,string> map_dict;
     Welcome();
     string a;

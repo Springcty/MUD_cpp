@@ -8,18 +8,18 @@ Pos Player::GetPos(){
     return temp;
 }
 void Player::move(string d){
-    switch (d)
+    switch (d[0])
     {
-    case "N": // up
+    case 'N': // up
         temp.y++;
         break;
-    case "E": // right
+    case 'E': // right
         temp.x++;
         break;
-    case "S": // down
+    case 'S': // down
         temp.y--;
         break;
-    case "W": // left
+    case 'W': // left
         temp.x--;
         break;
     default:
@@ -37,22 +37,22 @@ void Player::play(Map m){
         Pos a = temp;
         string s = ""; // remember the dirction able to move
         a.y ++;
-        if(!a.IsBlock()){
+        if(!m.isBlock(a)){
             cout << "North(N) ";
             s += "N";
         }
         a.y --; a.x ++;
-        if(!a.IsBlock()){
+        if(!m.isBlock(a)){
             cout << "East(E) ";
             s += "E";
         }
         a.x --; a.y --;
-        if(!a.IsBlock()){
+        if(!m.isBlock(a)){
             cout << "South(S) ";
             s += "S";
         }
         a.y ++; a.x --;
-        if(!a.IsBlock()){
+        if(!m.isBlock(a)){
             cout << "West(W) ";
             s += "W";
         }
@@ -63,7 +63,7 @@ void Player::play(Map m){
         cout << "Player: ";
         setcolor(white, backcolor());
         cin >> d;
-        if(d in s) move(d);
+        if(s.find(d) != s.npos) move(d);
         else if(d=="help"){
             m.printMap(temp);
         }
@@ -75,9 +75,9 @@ void Player::play(Map m){
         }
 
         int i_loc = temp.loc;
-        temp.update();
+        temp.UpdateLoc();
         if(temp.loc != i_loc){
-            cout << "You've arrived at " << dict[temp.loc] << "!" << endl;
+            cout << "You've arrived at " << m.dict[temp.loc] << "!" << endl;
             cout << "Keep Going!" << endl;
         }
 

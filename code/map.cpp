@@ -147,10 +147,3 @@ void Map::printMap(Pos p){
     }
     cout << "-+" << endl;
 }
-
-int dir[4][2] = {
-    {1,0},  // down
-    {0,-1}, // left
-    {-1,0}, // up
-    {0,1}   // right
-};
