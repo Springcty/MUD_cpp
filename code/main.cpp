@@ -21,8 +21,8 @@ void Welcome(){
     // setcolor(white, backcolor());
     cout << "'x' represents the spot is nucleic-acid test available." << endl;
     fstream fp;
-    // fp.open("./MUD_cpp/pic/map.txt", ios::in);
-    fp.open("D:\\Codefield\\CODE_cpp\\project\\MUD_cpp\\pic\\map.txt", ios::in);
+    fp.open("./map.txt", ios::in);
+    // fp.open("D:\\Codefield\\CODE_cpp\\project\\MUD_cpp\\pic\\map.txt", ios::in);
     if(!fp){
         cerr << "openfile failed!" << endl;
         exit(1);
