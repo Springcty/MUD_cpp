@@ -21,7 +21,7 @@
 
 - 改进后的迷宫：
 
-<img src="D:\OOP\Project\MUD_cpp\pic\map2.0.png" style="zoom:45%;" />
+<img src="C:\Users\Lenovo\AppData\Local\Temp\WeChat Files\486d0418a53cdcddbcd2b732aef3116.png" alt="486d0418a53cdcddbcd2b732aef3116" style="zoom: 33%;" />
 
 （其中E为起点，X为终点，P为玩家现在的位置）
 
@@ -54,15 +54,15 @@ public:
 1. 游戏的故事背景是你正在学校某处，而你的48小时核酸马上过期了。你需要找到一个核酸检测点，并尽快完成核酸检测。
 2. 游戏开始时，会提供给玩家一个示意图（如下），表示用户当前位置及核酸检测点的大致方位（但二者的具体位置和具体地图显然是未知的~）。
 
-<img src="D:\OOP\Project\MUD_cpp\pic\start.png" style="zoom:60%;" />
+<img src="C:\Users\Lenovo\AppData\Local\Temp\WeChat Files\b2919dadf212ce9b05ea575307ad23e.png" alt="b2919dadf212ce9b05ea575307ad23e" style="zoom: 50%;" />
 
 3. 玩家可以通过输入W,E,N,S选择移动方向；玩家每次移动，机器人“Little Ice"会提示玩家所有可以前进的方向：
 
-<img src="D:\OOP\Project\MUD_cpp\pic\play.png" style="zoom: 70%;" />
+<img src="C:\Users\Lenovo\Desktop\123.png" alt="123" style="zoom: 50%;" />
 
 4. "作弊模式"：输入help可以获得详细地图~
 
-<img src="D:\OOP\Project\MUD_cpp\pic\help.png" style="zoom: 70%;" />
+<img src="C:\Users\Lenovo\Desktop\124.png" alt="124" style="zoom: 50%;" />
 
 
 
