@@ -49,6 +49,7 @@ int main(){
         x = m.GetX();
         
         color_print(ROBOT, 1);
+        // cout << e.x << "," << e.y << endl;
         cout << "You are currently at ";
         color_print(m.dict[e.loc], 6);
         cout << endl;

@@ -1,6 +1,7 @@
 #ifndef __MAP_H__
 #define __MAP_H__
-#define ROWNUM 24 + 4
+#define ROWNUM_UNIT 3
+#define ROWNUM 3*ROWNUM_UNIT + 4
 
 #include <iostream>
 #include <cstdlib>
@@ -10,6 +11,8 @@
 #include <time.h>
 using namespace std;
 
+// int ROWNUM_UNIT = 3;
+// int ROWNUM = 3*ROWNUM_UNIT + 4;
 enum state{Wall, go, entrance, exits, me};
 
 struct Pos{
@@ -30,8 +33,7 @@ struct Pos{
         else return false;
     }
     inline int UpdateLoc(){
-        // return x/8 + 3*y/8;
-        loc = (x-2)/8 + 3*((y-2)/8);
+        loc = (x-2)/ROWNUM_UNIT + 3*((y-2)/ROWNUM_UNIT);
         return loc;
     }
 };

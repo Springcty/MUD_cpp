@@ -23,8 +23,8 @@ bool Map::isBlock(Pos p){ // return true for wall
 }
 
 void Map::SetExit(){  //get a random position
-    int t1 = intRand(17+2,nrows-2+2);
-    int t2 = intRand(9+2,14+2);
+    int t1 = intRand(1+2*ROWNUM_UNIT+1,nrows-1+2);
+    int t2 = intRand(1+ROWNUM_UNIT+1,2*ROWNUM_UNIT-1+2);
     int flag = boolRand();
     if(flag){
         pout = Pos(t1,t2);
@@ -39,25 +39,25 @@ void Map::SetEntrance(){
     if(flag==5)flag=8;
     switch(flag){
         case 0:
-            pin = Pos(intRand(2,9),intRand(2,9));
+            pin = Pos(intRand(2,1+ROWNUM_UNIT),intRand(2,1+ROWNUM_UNIT));
             break;
         case 1:
-            pin = Pos(intRand(10,17),intRand(2,9));
+            pin = Pos(intRand(2+ROWNUM_UNIT,1+2*ROWNUM_UNIT),intRand(2,1+ROWNUM_UNIT));
             break;
         case 2:
-            pin = Pos(intRand(18,25),intRand(2,9));
+            pin = Pos(intRand(2+2*ROWNUM_UNIT,1+3*ROWNUM_UNIT),intRand(2,1+ROWNUM_UNIT));
             break;
         case 3:
-            pin = Pos(intRand(2,9),intRand(10,17));
+            pin = Pos(intRand(2,1+ROWNUM_UNIT),intRand(2+ROWNUM_UNIT,1+2*ROWNUM_UNIT));
             break;
         case 4:
-            pin = Pos(intRand(10,17),intRand(10,17));
+            pin = Pos(intRand(2+ROWNUM_UNIT,1+2*ROWNUM_UNIT),intRand(2+ROWNUM_UNIT,1+2*ROWNUM_UNIT));
             break;
         case 6:
-            pin = Pos(intRand(2,9),intRand(18,25));
+            pin = Pos(intRand(2,1+ROWNUM_UNIT),intRand(2+2*ROWNUM_UNIT,1+3*ROWNUM_UNIT));
             break;
         case 8:
-            pin = Pos(intRand(18,25),intRand(18,25));
+            pin = Pos(intRand(2+2*ROWNUM_UNIT,1+3*ROWNUM_UNIT),intRand(2+2*ROWNUM_UNIT,1+3*ROWNUM_UNIT));
             break;
         default:
             break;
