@@ -1,0 +1,74 @@
+# M3 Report
+
+> **b0g队**
+>
+> 3200105948 丁静怡
+>
+> 3200105453 曹田雨
+
+## Ch1 任务进度
+
+### 1 改进迷宫生成方式
+
+经过多次尝试，我们发现，纯随机生成地图再判断合理性的方法效率低且生成的地图较为简单，可玩性低。
+
+因此，我们改进了地图的生成方式，通过DFS直接生成地图。具体思路如下：
+
+- 最开始设置地图内所有点均为Wall（即走不通），并随意选取其中一点作为起点；
+- 从起点开始，把自己想象成一只地鼠向四周挖隧道，每次随机选择一个方向挖，直至挖不动为止；
+
+用这种方式生成的迷宫，任意两点之间一定有且仅有一条正确的道路，大大提高了可玩性。
+
+- 改进后的迷宫：
+
+<img src="C:\Users\Lenovo\AppData\Local\Temp\WeChat Files\486d0418a53cdcddbcd2b732aef3116.png" alt="486d0418a53cdcddbcd2b732aef3116" style="zoom: 33%;" />
+
+（其中E为起点，X为终点，P为玩家现在的位置）
+
+### 2 完成player类
+
+```c++
+class Player{
+private:
+    Pos temp; // current pos
+    Pos x; // exit of the maze
+public:
+    Player(Pos e, Pos x): temp(e), x(x) { }
+    void move(string d); // move one step to d(N,E,S,W)
+    void play(Map m); // play in the map m
+};
+```
+
+`void play(Map)`主要实现功能：
+
+* 提示玩家当前可移动方向
+* 根据玩家指令改变当前位置坐标`temp`
+* 判断是否进入新区域，如果是则提示进入新区域
+* `help`作弊模式：支持地图提示
+* 提示玩家剩余步数，判断游戏结果
+
+
+
+### 3 设计用户界面
+
+1. 游戏的故事背景是你正在学校某处，而你的48小时核酸马上过期了。你需要找到一个核酸检测点，并尽快完成核酸检测。
+2. 游戏开始时，会提供给玩家一个示意图（如下），表示用户当前位置及核酸检测点的大致方位（但二者的具体位置和具体地图显然是未知的~）。
+
+<img src="C:\Users\Lenovo\AppData\Local\Temp\WeChat Files\b2919dadf212ce9b05ea575307ad23e.png" alt="b2919dadf212ce9b05ea575307ad23e" style="zoom: 50%;" />
+
+3. 玩家可以通过输入W,E,N,S选择移动方向；玩家每次移动，机器人“Little Ice"会提示玩家所有可以前进的方向：
+
+<img src="C:\Users\Lenovo\Desktop\123.png" alt="123" style="zoom: 50%;" />
+
+4. "作弊模式"：输入help可以获得详细地图~
+
+<img src="C:\Users\Lenovo\Desktop\124.png" alt="124" style="zoom: 50%;" />
+
+
+
+## Ch2 待实现功能
+
+至此，游戏的大致框架已经实现，后续我们还计划进行一些游戏界面的美化以及辅助功能的实现：
+
+- 将不同功能的提示语设置为不同颜色，便于玩家理解；
+- 根据玩家完成迷宫的”有效步数比“进行打分；
