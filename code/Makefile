@@ -9,6 +9,7 @@ result: $(OBJS)
 .PHONY: run
 run:
 	./result
+
 .PHONY: clean
 clean:
 	rm -f $(OBJS) result
