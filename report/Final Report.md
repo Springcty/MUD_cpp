@@ -108,17 +108,36 @@ public:
 * `help`作弊模式：支持地图提示；
 * 提示玩家剩余步数，判断游戏结果。
 
+### 2.3 其他
 
+我们通过使用"windows.h"库，对不同提示语采用不同颜色显示，游戏界面更加美观。
 
 ## Ch3 测试结果
 
 - 游戏开始：
 
+<img src="D:\OOP\Project\MUD_cpp\pic\final_pic\begin.png" style="zoom: 58%;" />
 
+- 游戏过程：
 
+<img src="D:\OOP\Project\MUD_cpp\pic\final_pic\play0.png" style="zoom: 67%;" />
 
+- “作弊”：
+
+  - 常规模式：地图大小为9$\times$9
+
+  <img src="D:\OOP\Project\MUD_cpp\pic\final_pic\map0.png" style="zoom: 67%;" />
+
+  - 地狱模式：地图大小为24$\times$24 
+
+<img src="D:\OOP\Project\MUD_cpp\pic\final_pic\map1.png" style="zoom: 67%;" />
+
+- 成功：
+
+<img src="D:\OOP\Project\MUD_cpp\pic\final_pic\win.png" style="zoom: 67%;" />
 
 
 
 ## Ch4 总结
 
+本项目是对本学期OOP课程内容的简单应用，体现了面向对象编程的思想，完成了一个简单但好玩~~（写地图的人说的）~~的迷宫游戏。同时，游戏背景结合时事，相信大家都会狠狠共情！
