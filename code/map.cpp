@@ -146,4 +146,5 @@ void Map::printMap(Pos p){
         cout << "--";
     }
     cout << "-+" << endl;
+    node[p.x][p.y] = go;
 }
