@@ -50,7 +50,6 @@ int main(){
     cin >> a;
     while(a=="yes"){
         Map m(mode);
-        cout << mode << endl;
         m.initMap(); // randomly generated a map
 
         Pos e(mode), x(mode);

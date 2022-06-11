@@ -12,7 +12,7 @@
 
 游戏开始时，玩家会获得一个简单的示意图——注意，它不是实际的迷宫，只是标注出了每个地点的大致方位*（实际上，这正是我们所在的紫金港校区的示意图）*。同时，机器人小冰（Little Ice）会告诉你现在所处的地点（区域）。
 
-在示意图中显示的九个地点中，只有两个地点是**可能**存在核酸检测点的，而只有其中一个地点**真正存在**检测点。因此你需要即刻出发寻找检测点，以守住宝贵的48小时核酸证明。每走一步，贴心的小冰都会告诉你当下所处的地点以及此时可以前进的方向，输入东（E）西（W）南（S）北（N）即可朝相应方向前进一步。注意，因为是48小时核酸，你必须在**48步之内**找到核酸检测点，否则就算游戏失败。同时，为了防止有人嫌麻烦不想做核酸，不利于疫情的常态化防控，我们偷偷准备了“**作弊模式**”：当输入“help”时，就可以得到完整地图！
+在示意图中显示的九个地点中，只有两个地点是**可能**存在核酸检测点的，而只有其中一个地点**真正存在**检测点。因此你需要即刻出发寻找检测点，以守住宝贵的48小时核酸证明。每走一步，贴心的小冰都会告诉你当下所处的地点以及此时可以前进的方向，输入东（E）西（W）南（S）北（N）即可朝相应方向前进一步。注意，因为是48小时核酸，你必须在**48步之内**找到核酸检测点，否则就算游戏失败。同时，为了防止有人嫌麻烦不想做核酸，不利于疫情的常态化防控，我们偷偷准备了“**作弊模式**”：当输入“help”时，就可以得到__完整地图__！
 
 除了上述的常规模式（primary mode），我们还为~~闲得无聊的~~玩家准备了”**地狱模式**“（inferno mode）：对应一个大得多的迷宫，以及高达1000的步数上限。~~（其实只是写迷宫的人写完发现太难了，但又不想浪费罢了）~~
 
@@ -116,27 +116,46 @@ public:
 
 - 游戏开始：
 
-<img src="D:\OOP\Project\MUD_cpp\pic\final_pic\begin.png" style="zoom: 58%;" />
+  - 给出紫金港核酸检测简版地图
+  - 选择游戏模式（常规模式或地狱模式）
+
+  <img src="D:\Codefield\CODE_cpp\project\MUD_cpp\pic\final_pic\begin.png" alt="begin" style="zoom:67%;" />
 
 - 游戏过程：
 
-<img src="D:\OOP\Project\MUD_cpp\pic\final_pic\play0.png" style="zoom: 67%;" />
+  - 游戏开始，提示起点所在区域及核酸检测点所在区域
+  - 提示help模式
+  - 每步提示可行进方向(N, E, S, W)
+
+  <img src="D:\Codefield\CODE_cpp\project\MUD_cpp\pic\final_pic\play0.png" alt="play0" style="zoom: 50%;" />
+
+  - 提示进入新区域
+
+  <img src="D:\Codefield\CODE_cpp\project\MUD_cpp\pic\final_pic\play1.png" alt="play1" style="zoom: 50%;" />
 
 - “作弊”：
 
   - 常规模式：地图大小为9$\times$9
 
-  <img src="D:\OOP\Project\MUD_cpp\pic\final_pic\map0.png" style="zoom: 67%;" />
+    <img src="D:\Codefield\CODE_cpp\project\MUD_cpp\pic\final_pic\map0.png" alt="map0" style="zoom:67%;" />
 
   - 地狱模式：地图大小为24$\times$24 
 
-<img src="D:\OOP\Project\MUD_cpp\pic\final_pic\map1.png" style="zoom: 67%;" />
+    <img src="D:\Codefield\CODE_cpp\project\MUD_cpp\pic\final_pic\map1.png" alt="map1" style="zoom: 67%;" />
 
 - 成功：
 
-<img src="D:\OOP\Project\MUD_cpp\pic\final_pic\win.png" style="zoom: 67%;" />
+  <img src="D:\Codefield\CODE_cpp\project\MUD_cpp\pic\final_pic\win.png" alt="win" style="zoom: 50%;" />
 
+- 失败
 
+  <img src="D:\Codefield\CODE_cpp\project\MUD_cpp\pic\final_pic\lose.png" alt="lose" style="zoom:50%;" />
+  
+- 退出游戏：每一步均可输入`exit` 退出游戏
+
+  <img src="D:\Codefield\CODE_cpp\project\MUD_cpp\pic\final_pic\exit.png" alt="exit" style="zoom: 50%;" />
+
+  
 
 ## Ch4 总结
 

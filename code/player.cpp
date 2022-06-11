@@ -99,7 +99,7 @@ void Player::play(Map m, int mode){
         cout << endl;
     }
     else{
-        color_print("Congratulations!", 4);
+        color_print("Congratulations! ", 4);
         cout << "You've arrived at ";
         color_print("Nucleic Acid Testing site\n", 6);
         cout << endl;
