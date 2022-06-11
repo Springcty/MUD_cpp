@@ -6,7 +6,7 @@
 #include "map.h"
 using namespace std;
 
-#define MOVENUM_P 50
+#define MOVENUM_P 48
 #define MOVENUM_I 1000
 #define ROBOT  "Little Ice: "
 #define PLAYER "Player:     "

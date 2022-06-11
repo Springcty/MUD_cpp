@@ -48,7 +48,6 @@ private:
     int **node; // state of node
     Pos pin; //position of entrance
     Pos pout; //position of exit
-    int cnt; //score
 
     int mode; // mode 0(primary), 1(inferno)
     int ROWNUM;
