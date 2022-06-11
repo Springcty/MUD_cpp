@@ -1,9 +1,7 @@
 #ifndef __MAP_H__
 #define __MAP_H__
-#define ROWNUM_UNIT_P 3
-#define ROWNUM_P 3*ROWNUM_UNIT_P + 4
-#define ROWNUM_UNIT_I 6
-#define ROWNUM_I 3*ROWNUM_UNIT_I + 4
+#define ROWNUM_UNIT 3
+#define ROWNUM 3*ROWNUM_UNIT + 4
 
 #include <iostream>
 #include <cstdlib>
@@ -13,15 +11,15 @@
 #include <time.h>
 using namespace std;
 
+// int ROWNUM_UNIT = 3;
+// int ROWNUM = 3*ROWNUM_UNIT + 4;
 enum state{Wall, go, entrance, exits, me};
 
 struct Pos{
     int x;
     int y;
-    int mode;
     int loc;
-    Pos(int m, int px=0, int py=0){
-        mode = m;
+    Pos(int px=0, int py=0){
         x=px;
         y=py;
         loc = UpdateLoc();
@@ -35,35 +33,23 @@ struct Pos{
         else return false;
     }
     inline int UpdateLoc(){
-        if(mode==0) loc = (x-2)/ROWNUM_UNIT_P + 3*((y-2)/ROWNUM_UNIT_P);
-        else loc = (x-2)/ROWNUM_UNIT_I + 3*((y-2)/ROWNUM_UNIT_I);
+        loc = (x-2)/ROWNUM_UNIT + 3*((y-2)/ROWNUM_UNIT);
         return loc;
     }
 };
 
 class Map{
 private:
-    int nrows; // number of rows
-    int ncols; // number of columns
-    int **node; // state of node
+    static const int nrows = ROWNUM-4; //number of rows
+    static const int ncols = ROWNUM-4; //number of columns
+    int node[ROWNUM][ROWNUM]; // state of the node
     Pos pin; //position of entrance
     Pos pout; //position of exit
     int cnt; //score
-
-    int mode; // mode 0(primary), 1(inferno)
-    int ROWNUM;
-    int ROWNUM_UNIT;
 public:
     map<int,string> dict;
-    Map(int mode):pin(mode), pout(mode){
-        this->mode = mode;
-        ROWNUM = mode ? ROWNUM_I : ROWNUM_P;
-        ROWNUM_UNIT = mode ? ROWNUM_UNIT_I : ROWNUM_UNIT_P;
-        nrows = ROWNUM - 4;
-        ncols = ROWNUM - 4;
-        node = new int*[ROWNUM];
+    Map(){
         for(int i=0;i<ROWNUM;i++){
-            node[i] = new int[ROWNUM];
             for(int j=0;j<ROWNUM;j++){
                 node[i][j] = Wall;
             }
@@ -78,20 +64,15 @@ public:
         dict[7] = "Graduate School Building";
         dict[8] = "Agriculture & Medicine Library";
     }
-    virtual ~Map(){
-        for(int i=0; i<ROWNUM; i++){
-            delete [] node[i];
-        }
-        delete []node;
-    }
-    virtual void SetExit();
-    virtual void SetEntrance();
-    virtual void dig(int px, int py);
-    virtual void initMap();
-    virtual void printMap(Pos p);
-    virtual Pos GetE();
-    virtual Pos GetX();
-    virtual bool isBlock(Pos p); // return true for wall
+    ~Map(){}
+    void SetExit();
+    void SetEntrance();
+    void dig(int px, int py);
+    void initMap();
+    void printMap(Pos p);
+    Pos GetE();
+    Pos GetX();
+    bool isBlock(Pos p); // return true for wall
 };
 
 #endif /* map_h */

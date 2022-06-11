@@ -27,10 +27,10 @@ void Map::SetExit(){  //get a random position
     int t2 = intRand(1+ROWNUM_UNIT+1,2*ROWNUM_UNIT-1+2);
     int flag = boolRand();
     if(flag){
-        pout = Pos(t1,t2);
+        pout = Pos(mode,t1,t2);
     }
     else{
-        pout = Pos(t2,t1);
+        pout = Pos(mode,t2,t1);
     }
 }
 
@@ -39,25 +39,25 @@ void Map::SetEntrance(){
     if(flag==5)flag=8;
     switch(flag){
         case 0:
-            pin = Pos(intRand(2,1+ROWNUM_UNIT),intRand(2,1+ROWNUM_UNIT));
+            pin = Pos(mode,intRand(2,1+ROWNUM_UNIT),intRand(2,1+ROWNUM_UNIT));
             break;
         case 1:
-            pin = Pos(intRand(2+ROWNUM_UNIT,1+2*ROWNUM_UNIT),intRand(2,1+ROWNUM_UNIT));
+            pin = Pos(mode,intRand(2+ROWNUM_UNIT,1+2*ROWNUM_UNIT),intRand(2,1+ROWNUM_UNIT));
             break;
         case 2:
-            pin = Pos(intRand(2+2*ROWNUM_UNIT,1+3*ROWNUM_UNIT),intRand(2,1+ROWNUM_UNIT));
+            pin = Pos(mode,intRand(2+2*ROWNUM_UNIT,1+3*ROWNUM_UNIT),intRand(2,1+ROWNUM_UNIT));
             break;
         case 3:
-            pin = Pos(intRand(2,1+ROWNUM_UNIT),intRand(2+ROWNUM_UNIT,1+2*ROWNUM_UNIT));
+            pin = Pos(mode,intRand(2,1+ROWNUM_UNIT),intRand(2+ROWNUM_UNIT,1+2*ROWNUM_UNIT));
             break;
         case 4:
-            pin = Pos(intRand(2+ROWNUM_UNIT,1+2*ROWNUM_UNIT),intRand(2+ROWNUM_UNIT,1+2*ROWNUM_UNIT));
+            pin = Pos(mode,intRand(2+ROWNUM_UNIT,1+2*ROWNUM_UNIT),intRand(2+ROWNUM_UNIT,1+2*ROWNUM_UNIT));
             break;
         case 6:
-            pin = Pos(intRand(2,1+ROWNUM_UNIT),intRand(2+2*ROWNUM_UNIT,1+3*ROWNUM_UNIT));
+            pin = Pos(mode,intRand(2,1+ROWNUM_UNIT),intRand(2+2*ROWNUM_UNIT,1+3*ROWNUM_UNIT));
             break;
         case 8:
-            pin = Pos(intRand(2+2*ROWNUM_UNIT,1+3*ROWNUM_UNIT),intRand(2+2*ROWNUM_UNIT,1+3*ROWNUM_UNIT));
+            pin = Pos(mode,intRand(2+2*ROWNUM_UNIT,1+3*ROWNUM_UNIT),intRand(2+2*ROWNUM_UNIT,1+3*ROWNUM_UNIT));
             break;
         default:
             break;

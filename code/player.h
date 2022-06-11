@@ -6,7 +6,8 @@
 #include "map.h"
 using namespace std;
 
-#define MOVENUM 10
+#define MOVENUM_P 50
+#define MOVENUM_I 1000
 #define ROBOT  "Little Ice: "
 #define PLAYER "Player:     "
 
@@ -17,7 +18,7 @@ private:
 public:
     Player(Pos e, Pos x): temp(e), x(x) { }
     void move(string d); // move one step to d(N,E,S,W)
-    void play(Map m); // play in the map m
+    void play(Map, int); // play in the map m
 };
 
 void color_print(string s, int color);

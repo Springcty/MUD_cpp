@@ -7,7 +7,7 @@
 using namespace std;
 
 // init the game interface
-void Welcome(){
+int Welcome(){
     color_print(ROBOT, 1);
     cout << "Welcome to ";
     color_print("ZJU Nucleic Acid Testing Challenge! ! !", 3);
@@ -30,21 +30,30 @@ void Welcome(){
     }
     fp.close();
 
+    int mode;
+    color_print(ROBOT, 1);
+    cout << "You can choose primary mode(0) or inferno mode(1): ";
+    cin >> mode;
+
     color_print(ROBOT, 1);
     cout << "Begin? (yes/no)" << endl;
     color_print(PLAYER, 2);
+
+    return mode;
 }
 
 int main(){
     srand((int)time(NULL)); // random
-    Welcome();
+    int mode = Welcome();
+    int MOVENUM = mode ? MOVENUM_I : MOVENUM_P;
     string a;
     cin >> a;
     while(a=="yes"){
-        Map m;
+        Map m(mode);
+        cout << mode << endl;
         m.initMap(); // randomly generated a map
 
-        Pos e, x;
+        Pos e(mode), x(mode);
         e = m.GetE();
         x = m.GetX();
         
@@ -62,7 +71,7 @@ int main(){
         cout << "*If you need a help, just type 'help' before you choose a direction~\n" << endl;
 
         Player p(e, x);
-        p.play(m); // begin play in the map m
+        p.play(m, mode); // begin play in the map m
 
         color_print(ROBOT, 1);
         cout << "Play Again? (yes/no)" << endl;

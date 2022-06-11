@@ -30,8 +30,9 @@ void Player::move(string d){
     }
 }
 
-void Player::play(Map m){
+void Player::play(Map m, int mode){
     int play_cnt = 0;
+    int MOVENUM = mode ? MOVENUM_I : MOVENUM_P;
     while(temp != x){
         color_print(ROBOT, 1);
         cout << "You can choose ";
